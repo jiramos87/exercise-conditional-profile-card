@@ -23,26 +23,49 @@ import "../style/index.scss";
     }
  */
 function render(variables = {}) {
-  console.log("These are the current variables now: ", variables); //print on the console
+  console.log("These are the current variables: ", variables); //print on the console
   // here we ask the logical questions to make decisions on how to build the html
   // if includeCover==false then we reset the cover code without the <img> tag to make the cover transparent.
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
+  let name = `${variables.name}`;
+  if (variables.name === null) name = "Javier";
+  let lastname = `${variables.lastname}`;
+  if (variables.lastname === null) lastname = "Ramos";
+
+  let role = `${variables.role}`;
+  if (variables.role === null) role = "<h2>No role</h2>";
+  let city = `${variables.city}`;
+  if (variables.city === null) city = "City";
+  let country = `${variables.country}`;
+  if (variables.country === null) country = "Country";
+  let socialMediaPosition = `${variables.socialMediaPosition}`;
+  if (variables.socialMediaPosition === "position-left")
+    socialMediaPosition = "position-left";
+  let twitter = `${variables.twitter}`;
+  if (variables.twitter === null) twitter = "https://twitter.com/Javi_trombon";
+  let github = `${variables.github}`;
+  if (variables.github === null) github = "https://github.com/jiramos87";
+  let linkedin = `${variables.linkedin}`;
+  if (variables.linkedin === null)
+    linkedin = "https://www.linkedin.com/in/javier-ramos-humeres/";
+  let instagram = `${variables.instagram}`;
+  if (variables.instagram === null)
+    instagram = "https://www.instagram.com/javi.trombon/";
+
   // reset the website body with the new html output
-  document.querySelector(
-    "#widget_content"
-  ).innerHTML = `<div class="widget"></div>
+  document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/alesanchezr"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="https://github.com/alesanchezr"><i class="fa fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/alesanchezr"><i class="fa fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/alesanchezr"><i class="fa fa-instagram"></i></a></li>
+          <h1>${name} ${lastname}</h1>
+          <h2>${role}</h2>
+          <h3>${city}, ${country}</h3>
+          <ul class=${socialMediaPosition}>
+            <li><a href=${twitter}><i class="fa fa-twitter"></i></a></li>
+            <li><a href=${github}><i class="fa fa-github"></i></a></li>
+            <li><a href=${linkedin}><i class="fa fa-linkedin"></i></a></li>
+            <li><a href=${instagram}><i class="fa fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
@@ -58,12 +81,12 @@ window.onload = function() {
     // this is the url of the image that will used as background for the profile cover
     background: "https://images.unsplash.com/photo-1511974035430-5de47d3b95da",
     // this is the url for the profile avatar
-    avatarURL: "https://randomuser.me/api/portraits/women/42.jpg",
+    avatarURL: "https://i.ibb.co/StXpB8M/foto400x400.jpg",
     // social media bar position (left or right)
     socialMediaPosition: "position-left",
     // social media usernames
     twitter: null,
-    github: "alesanchezr",
+    github: null,
     linkedin: null,
     instagram: null,
     name: null,
